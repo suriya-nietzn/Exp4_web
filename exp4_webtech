@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile App Promo - Sign In / Sign Up</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f1ff;
+    color: white;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: #1c1047;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #a875ff;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #a875ff;
+}
+
+/* Main Section */
+.container {
+    min-height: 90vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 8%;
+    background: linear-gradient(135deg, #24105c, #6734d8);
+}
+
+.left {
+    max-width: 500px;
+}
+
+.left h1 {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.left p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.download-btn {
+    display: inline-block;
+    background: #a875ff;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+}
+
+/* Form Box */
+.form-box {
+    background: white;
+    color: #24105c;
+    width: 350px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px #180c4433;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+}
+
+.tabs button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    cursor: pointer;
+    color: #24105c;
+}
+
+.tabs button.active {
+    color: #7539e8;
+    border-bottom: 3px solid #7539e8;
+}
+
+.form-box input {
+    width: 100%;
+    padding: 13px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 13px;
+    background: #7539e8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.submit-btn:hover {
+    background: #5122ad;
+}
+
+.message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.message a {
+    color: #7539e8;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 35px;
+        text-align: center;
+    }
+
+    .left h1 {
+        font-size: 32px;
+    }
+
+    .form-box {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="logo">NovaApp</div>
+
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Download</a></li>
+        <li><a href="#form">Get App</a></li>
+    </ul>
+</nav>
+
+<!-- Main Section -->
+<section class="container">
+
+    <div class="left">
+        <h1>Smarter App.<br>A Better You.</h1>
+
+        <p>
+            Work smarter, live better with NovaApp.
+            Join us and experience a new way of managing
+            your daily activities.
+        </p>
+
+        <a href="#" class="download-btn">Download Now</a>
+    </div>
+
+    <!-- Sign In / Sign Up Form -->
+    <div class="form-box" id="form">
+
+        <div class="tabs">
+            <button id="signinTab" class="active"
+                onclick="showForm('signin')">Sign In</button>
+
+            <button id="signupTab"
+                onclick="showForm('signup')">Sign Up</button>
+        </div>
+
+        <form id="signinForm">
+            <input type="email" placeholder="Email Address" required>
+            <input type="password" placeholder="Password" required>
+
+            <button type="submit" class="submit-btn">
+                Sign In
+            </button>
+
+            <p class="message">
+                Don't have an account?
+                <a href="#" onclick="showForm('signup')">Sign Up</a>
+            </p>
+        </form>
+
+        <form id="signupForm" style="display:none">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="password" placeholder="Password" required>
+
+            <button type="submit" class="submit-btn">
+                Create Account
+            </button>
+
+            <p class="message">
+                Already have an account?
+                <a href="#" onclick="showForm('signin')">Sign In</a>
+            </p>
+        </form>
+
+    </div>
+</section>
+
+<script>
+function showForm(type) {
+
+    const signin = document.getElementById("signinForm");
+    const signup = document.getElementById("signupForm");
+
+    const signinTab = document.getElementById("signinTab");
+    const signupTab = document.getElementById("signupTab");
+
+    if (type === "signin") {
+        signin.style.display = "block";
+        signup.style.display = "none";
+
+        signinTab.classList.add("active");
+        signupTab.classList.remove("active");
+    }
+    else {
+        signin.style.display = "none";
+        signup.style.display = "block";
+
+        signupTab.classList.add("active");
+        signinTab.classList.remove("active");
+    }
+}
+</script>
+
+</body>
+</html>
